@@ -1,0 +1,109 @@
+// Docs: https://dbml.dbdiagram.io/docs/
+
+Table XPUser {
+  id uuid [pk, unique]
+  email email [unique]
+  age positive_integer [null]
+  gender str [null]
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table Currency {
+  id int [pk, unique]
+  title str
+  symbol str
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table UserWallet {
+  id int [pk, unique]
+  user_id foreign_key [ref: - XPUser.id]
+  currency_id int [ref: > Currency.id]
+  balance decimal
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table WalletTransaction {
+  id int [pk, unique]
+  wallet_id int [ref: > UserWallet.id]
+  transaction_type int [ref: > TransactionType.id]
+  transaction_status int [ref: > TransactionStatus.id]
+  payment_provider int [ref: > PaymentProvider.id]
+  payment_method int [ref: > PaymentMethod.id]
+  currency_id int [ref: > Currency.id]
+  amount_paid decimal
+  amount_transferred float
+  service_fee float
+
+  created_at timestamp
+  // updated_at timestamp BR: ? disable update
+}
+
+Table TransactionLog {
+  id int [pk, unique]
+  transaction_id int [ref: > WalletTransaction.id]
+  previous_status_id int [ref: > TransactionStatus.id]
+  new_status_id int [ref: > TransactionStatus.id]
+  changed_by str
+  reason str
+
+  created_at timestamp
+  // updated_at timestamp BR: ? disable update
+}
+
+
+Table TransactionType {
+  id int [pk, unique]
+  title str
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table TransactionStatus {
+  id int [pk, unique]
+  title str
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table PaymentMethod {
+  id int [pk, unique]
+  title str
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table PaymentProvider {
+  id int [pk, unique]
+  title str
+
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table notifications {
+  id int [pk, unique]
+  user_id int [ref: > XPUser.id]
+  message string
+  created_at timestamp
+  is_read bool
+}
+
+
+Table KYCAttempt {
+  id int [pk, unique]
+  user_id int [ref: > XPUser.id]
+  id_photo str [null]
+  face_photo str [null]
+  attempt positive_integer [default:`0`]
+  id_analyzer_response json [null]
+  status integer [default:`0`]
+}

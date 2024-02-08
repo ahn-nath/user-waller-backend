@@ -1,0 +1,30 @@
+FROM python:3.11-slim-bullseye
+
+WORKDIR /app/
+
+# Update package lists and install ping and curl
+RUN apt-get update && apt-get install -y \
+    iputils-ping \
+    curl \
+    git \
+    nano \
+    gcc \
+    graphviz \
+    graphviz-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install python dependencies
+COPY requirements.txt /app/requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --upgrade pip wheel setuptools
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+
+# Copy project
+COPY ./app .
+
+EXPOSE 18000
+
+COPY entrypoint.sh /app/entrypoint.sh
+
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["sh", "entrypoint.sh"]

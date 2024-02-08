@@ -1,0 +1,10 @@
+.dockerignore
+Dockerfile
+**/Dockerfile
+.git/
+.gitignore
+README.md
+**/test
+*/docker-compose*
+# .env
+**/db.sqlite3

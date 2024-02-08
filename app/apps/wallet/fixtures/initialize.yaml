@@ -1,0 +1,82 @@
+- model: wallet.transactiontype
+  fields:
+    title: Deposit
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.transactiontype
+  fields:
+    title: Withdrawal
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.transactiontype
+  fields:
+    title: Transfer
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.transactionstatus
+  fields:
+    title: Pending
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.transactionstatus
+  fields:
+    title: Completed
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.transactionstatus
+  fields:
+    title: Cancelled
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.paymentmethod
+  fields:
+    title: All
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.paymentmethod
+  fields:
+    title: Bank Transfer
+    created_at: '2024-01-17T00:00:00.000Z'
+    updated_at: '2024-01-17T00:00:00.000Z'
+
+- model: wallet.paymentmethod
+  fields:
+    title: Gift
+    created_at: '2024-01-17T00:00:00.000Z'
+    updated_at: '2024-01-17T00:00:00.000Z'
+
+- model: wallet.paymentprovider
+  fields:
+    title: Stripe
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.paymentprovider
+  fields:
+    title: Company
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
+
+- model: wallet.paymentprovider
+  fields:
+    title: Bank
+    created_at: '2024-01-17T00:00:00.000Z'
+    updated_at: '2024-01-17T00:00:00.000Z'
+
+- model: wallet.banktransferdetails
+  fields:
+    bank_name: Banco Santander
+    account_name: One Saw SA
+    account_number: '0298977'
+    CBU: '0720166620000002989772'
+    branch: '166'
+    alias: 'ONE.XP CUIT: 30-71069775-9'
+    created_at: '2024-01-15T00:00:00.000Z'
+    updated_at: '2024-01-15T00:00:00.000Z'
